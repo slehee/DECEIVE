@@ -26,6 +26,8 @@ share/python-wheels/
 *.egg
 dec_env/
 dec_Env/
+ssh_log.log
+ssh_honeypot_report.md
 MANIFEST
 
 # PyInstaller
