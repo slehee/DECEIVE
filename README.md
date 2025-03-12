@@ -98,6 +98,55 @@ Things to note:
     * `Session summary` messages contain not only a summary of the commands, but also a guess as to what they might have been intended to accomplish. There will also be a `judgement` field that contains one of "BENIGN", "SUSPICIOUS", or "MALICIOUS"
 * Since this is a honeypot and not intended for use by real users, IT WILL LOG USERNAMES AND PASSWORDS! These are found in the `Authentication success` messages, in the `username` and `password` fields.
 
+
+### Generate Report from the log file
+
+Report will be generated based on the log file including:
+
+### Unique Attacker IPs
+
+### Login Attempts by usernames and passwd 
+
+```yml
+### **Username: ubuntu**
+- **Password:** `!@#$qwerASDF` - **Status:** Success
+- **Password:** `!Q2w3e4r` - **Status:** Failed
+- **Password:** `!qaz2wsx` - **Status:** Success
+- **Password:** `!QAZ2wsx` - **Status:** Success
+- **Password:** `!QAZ2wsx3edc` - **Status:** Success
+- **Password:** `!QAZxsw2` - **Status:** Failed
+- **Password:** `000000` - **Status:** Success
+- **Password:** `010101` - **Status:** Success
+- **Password:** `111111` - **Status:** Failed
+- **Password:** `123456` - **Status:** Failed
+- **Password:** `112` - **Status:** Failed
+- **Password:** `1122334455` - **Status:** Failed
+- **Password:** `12` - **Status:** Failed
+- **Password:** `123` - **Status:** Success
+- **Password:** `123!@#` - **Status:** Failed
+- **Password:** `123123` - **Status:** Success
+- **Password:** `123321` - **Status:** Failed
+- **Password:** `1234` - **Status:** Success
+- **Password:** `1234.com` - **Status:** Failed
+
+```
+
+### Executed Commands
+
+```yml
+
+- `uname -s -v -n -r -m`
+- `uptime -p`
+- `lspci | grep VGA | cut -f5- -d ' '`
+- `lspci | grep VGA -c`
+- `nvidia-smi -q | grep "Product Name" | head -n 1 | awk '{print $4, $5, $6, $7, $8, $9, $10, $11}'`
+- `lspci | grep "3D controller" | cut -f5- -d ' '`
+- `nvidia-smi -q | grep "Product Name" | awk '{print $4, $5, $6, $7, $8, $9, $10, $11}' | grep . -c `
+- `ip r | grep -Eo '[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/[0-9]{1,2}' 
+
+```
+### Session Summaries
+
 ### Contributing
 Contributions are welcome! Please submit pull requests or open issues to discuss any changes or improvements.
 
