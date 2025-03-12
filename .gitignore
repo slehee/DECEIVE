@@ -28,6 +28,7 @@ dec_env/
 dec_Env/
 ssh_log.log
 ssh_honeypot_report.md
+report.md
 MANIFEST
 
 # PyInstaller
